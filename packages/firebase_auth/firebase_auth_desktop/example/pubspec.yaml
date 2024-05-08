@@ -23,18 +23,18 @@ environment:
 dependencies:
   crypto: ^3.0.1
   desktop_webview_auth: ^0.0.9
-  firebase_auth: ^3.4.1
+  firebase_auth: ^4.19.5
   firebase_auth_desktop:
     path: ../
-  firebase_core: ^1.19.1
+  firebase_core: ^2.31.0
   firebase_core_desktop:
     path: ../../../firebase_core/firebase_core_desktop
   flutter:
     sdk: flutter
   flutter_lints: ^1.0.4
   flutter_signin_button: ^2.0.0
-  google_sign_in: ^5.0.0-nullsafety
-  google_sign_in_dartio: ^0.2.0
+  google_sign_in: ^6.2.1
+  google_sign_in_dartio: ^0.3.0
   sign_in_with_apple: ^3.3.0
   yaru: ^0.2.0
 

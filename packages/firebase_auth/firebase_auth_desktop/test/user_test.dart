@@ -107,7 +107,8 @@ void main() {
 
       user = kMockUser;
 
-      mockUserPlatform = MockUserPlatform(mockAuthPlatform, user!);
+      mockUserPlatform =
+          MockUserPlatform(mockAuthPlatform, PigeonUserDetails.decode(user!));
 
       mockUserCredPlatform = MockUserCredentialPlatform(
         FirebaseAuthPlatform.instance,
@@ -165,8 +166,8 @@ void main() {
     });
 
     test('getIdTokenResult()', () async {
-      when(mockUserPlatform!.getIdTokenResult(any))
-          .thenAnswer((_) async => IdTokenResult(kMockIdTokenResult));
+      when(mockUserPlatform!.getIdTokenResult(any)).thenAnswer((_) async =>
+          IdTokenResult(PigeonIdTokenResult.decode(kMockIdTokenResult)));
 
       final idTokenResult = await auth!.currentUser!.getIdTokenResult(true);
 
@@ -320,8 +321,8 @@ void main() {
     });
 
     test('toString()', () async {
-      when(mockAuthPlatform.currentUser)
-          .thenReturn(TestUserPlatform(mockAuthPlatform, user!));
+      when(mockAuthPlatform.currentUser).thenReturn(
+          TestUserPlatform(mockAuthPlatform, PigeonUserDetails.decode(user!)));
 
       const userInfo = 'UserInfo('
           'displayName: Flutter Test User, '
@@ -384,7 +385,7 @@ class MockFirebaseAuth extends Mock
 
   @override
   FirebaseAuthPlatform setInitialValues({
-    Map<String, dynamic>? currentUser,
+    PigeonUserDetails? currentUser,
     String? languageCode,
   }) {
     return super.noSuchMethod(
@@ -401,7 +402,7 @@ class MockFirebaseAuth extends Mock
 class MockUserPlatform extends Mock
     with MockPlatformInterfaceMixin
     implements TestUserPlatform {
-  MockUserPlatform(FirebaseAuthPlatform auth, Map<String, dynamic> _user) {
+  MockUserPlatform(FirebaseAuthPlatform auth, PigeonUserDetails _user) {
     TestUserPlatform(auth, _user);
   }
 
@@ -561,7 +562,7 @@ class TestFirebaseAuthPlatform extends FirebaseAuthPlatform {
 
   @override
   FirebaseAuthPlatform setInitialValues({
-    Map<String, dynamic>? currentUser,
+    PigeonUserDetails? currentUser,
     String? languageCode,
   }) {
     return this;
@@ -569,7 +570,7 @@ class TestFirebaseAuthPlatform extends FirebaseAuthPlatform {
 }
 
 class TestUserPlatform extends UserPlatform {
-  TestUserPlatform(FirebaseAuthPlatform auth, Map<String, dynamic> data)
+  TestUserPlatform(FirebaseAuthPlatform auth, PigeonUserDetails data)
       : super(auth, TestMultiFactor(auth), data);
 }
 

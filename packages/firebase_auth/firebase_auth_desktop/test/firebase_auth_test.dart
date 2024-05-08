@@ -94,7 +94,8 @@ void main() {
       auth = FirebaseAuth.instanceFor(app: app);
       user = kMockUser;
 
-      mockUserPlatform = MockUserPlatform(mockAuthPlatform, user);
+      mockUserPlatform =
+          MockUserPlatform(mockAuthPlatform, PigeonUserDetails.decode(user));
       mockConfirmationResultPlatform = MockConfirmationResultPlatform();
       mockAdditionalUserInfo = AdditionalUserInfo(
         isNewUser: false,
@@ -245,8 +246,11 @@ void main() {
     group('checkActionCode()', () {
       test('should call delegate method', () async {
         // Necessary as we otherwise get a "null is not a Future<void>" error
-        when(mockAuthPlatform.checkActionCode(any))
-            .thenAnswer((i) async => ActionCodeInfo(data: {}, operation: 0));
+        when(mockAuthPlatform.checkActionCode(any)).thenAnswer((i) async =>
+            ActionCodeInfo(
+                data: ActionCodeInfoData(
+                    email: kMockEmail, previousEmail: kMockEmail),
+                operation: ActionCodeInfoOperation.emailSignIn));
 
         await auth.checkActionCode(kMockActionCode);
         verify(mockAuthPlatform.checkActionCode(kMockActionCode));
@@ -830,7 +834,7 @@ class MockFirebaseAuth extends Mock
 
   @override
   FirebaseAuthPlatform setInitialValues({
-    Map<String, dynamic>? currentUser,
+    PigeonUserDetails? currentUser,
     String? languageCode,
   }) {
     return super.noSuchMethod(
@@ -1024,7 +1028,7 @@ class FakeFirebaseAuthPlatform extends Fake
 
   @override
   FirebaseAuthPlatform setInitialValues({
-    Map<String, dynamic>? currentUser,
+    PigeonUserDetails? currentUser,
     String? languageCode,
   }) {
     return this;
@@ -1034,7 +1038,7 @@ class FakeFirebaseAuthPlatform extends Fake
 class MockUserPlatform extends Mock
     with MockPlatformInterfaceMixin
     implements TestUserPlatform {
-  MockUserPlatform(FirebaseAuthPlatform auth, Map<String, dynamic> _user) {
+  MockUserPlatform(FirebaseAuthPlatform auth, PigeonUserDetails _user) {
     TestUserPlatform(auth, _user);
   }
 }
@@ -1085,7 +1089,7 @@ class TestFirebaseAuthPlatform extends FirebaseAuthPlatform {
 
   @override
   FirebaseAuthPlatform setInitialValues({
-    Map<String, dynamic>? currentUser,
+    PigeonUserDetails? currentUser,
     String? languageCode,
   }) {
     return this;
@@ -1153,7 +1157,7 @@ class TestAuthProvider extends AuthProvider {
 }
 
 class TestUserPlatform extends UserPlatform {
-  TestUserPlatform(FirebaseAuthPlatform auth, Map<String, dynamic> data)
+  TestUserPlatform(FirebaseAuthPlatform auth, PigeonUserDetails data)
       : super(auth, TestMultiFactor(auth), data);
 }
 

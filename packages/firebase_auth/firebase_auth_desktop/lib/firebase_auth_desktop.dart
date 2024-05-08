@@ -75,7 +75,7 @@ class FirebaseAuthDesktop extends FirebaseAuthPlatform {
 
   /// Instance of auth from Identity Provider API service.
   auth_dart.FirebaseAuth? get _delegate =>
-      _app == null ? null : auth_dart.FirebaseAuth.instanceFor(app: _app!);
+      _app == null ? null : auth_dart.FirebaseAuth.instanceFor(app: _app);
 
   final core_dart.FirebaseApp? _app;
 
@@ -109,7 +109,7 @@ class FirebaseAuthDesktop extends FirebaseAuthPlatform {
 
   @override
   FirebaseAuthPlatform setInitialValues({
-    Map<String, dynamic>? currentUser,
+    PigeonUserDetails? currentUser,
     String? languageCode,
   }) {
     return this;

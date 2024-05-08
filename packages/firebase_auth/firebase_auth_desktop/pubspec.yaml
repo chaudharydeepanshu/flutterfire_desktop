@@ -9,13 +9,13 @@ environment:
 
 dependencies:
   desktop_webview_auth: ^0.0.8
-  firebase_auth: ^3.6.2
+  firebase_auth: ^4.19.5
   firebase_auth_dart:
     git:
       url: https://github.com/tksuns12/flutterfire_desktop.git
       path: packages/firebase_auth/firebase_auth_dart
-  firebase_auth_platform_interface: ^6.5.2
-  firebase_core: ^1.20.0
+  firebase_auth_platform_interface: ^7.2.6
+  firebase_core: ^2.31.0
   firebase_core_dart:
     git:
       url: https://github.com/tksuns12/flutterfire_desktop.git
@@ -26,7 +26,7 @@ dependencies:
 
 dev_dependencies:
   async: ^2.8.1
-  firebase_core_platform_interface: ^4.5.0
+  firebase_core_platform_interface: ^5.0.0
   flutter_test:
     sdk: flutter
   mockito: ^5.0.0

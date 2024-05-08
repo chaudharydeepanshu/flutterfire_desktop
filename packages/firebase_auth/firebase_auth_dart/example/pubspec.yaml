@@ -4,7 +4,7 @@ version: 1.0.0
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.14.4 <3.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 dev_dependencies:
   lints: ^1.0.0
@@ -13,8 +13,10 @@ dependencies:
   ansicolor: ^2.0.1
   args: ^2.3.0
   cli_util: ^0.3.5
-  firebase_auth_dart: ^1.0.1
-  firebase_core_dart: ^1.0.1
+  firebase_auth_dart: 
+    path: ../
+  firebase_core_dart: 
+    path: ../../../firebase_core/firebase_core_dart
 dependency_overrides:
   firebase_auth_dart:
     path: ../

@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -18,15 +18,17 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   crypto: ^3.0.1
   desktop_webview_auth: ^0.0.9
   firebase_auth: ^3.4.1
-  firebase_auth_desktop: ^1.0.2
+  firebase_auth_desktop:
+    path: ../
   firebase_core: ^1.19.1
-  firebase_core_desktop: ^1.0.2
+  firebase_core_desktop:
+    path: ../../../firebase_core/firebase_core_desktop
   flutter:
     sdk: flutter
   flutter_lints: ^1.0.4

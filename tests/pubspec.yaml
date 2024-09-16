@@ -27,9 +27,9 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  cloud_functions: ^3.2.10
-  firebase_auth: ^3.3.11
-  firebase_core: ^1.13.1
+  cloud_functions: ^5.1.1
+  firebase_auth: ^5.2.1
+  firebase_core: ^3.4.1
   firebase_auth_desktop:
     path: ../packages/firebase_auth/firebase_auth_desktop
   firebase_auth_dart:
@@ -58,6 +58,7 @@ dependency_overrides:
     path: ../packages/firebase_functions/firebase_functions_desktop
   firebase_functions_dart:
     path: ../packages/firebase_functions/firebase_functions_dart
+  process: ^5.0.2
 
 dev_dependencies:
   drive: ^1.0.0-1.0.nullsafety.5

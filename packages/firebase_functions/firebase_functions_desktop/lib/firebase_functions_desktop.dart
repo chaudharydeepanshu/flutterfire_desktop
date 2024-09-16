@@ -72,7 +72,7 @@ class HttpsCallableDesktop extends HttpsCallablePlatform {
     String? origin,
     String name,
     HttpsCallableOptions options,
-  ) : super(functions, origin, name, options);
+  ) : super(functions, origin, name, options, null);
 
   /// The dart functions instance for accessing the cloud functions API.
   final functions_dart.FirebaseFunctions _delegate;
@@ -96,7 +96,7 @@ class HttpsCallableDesktop extends HttpsCallablePlatform {
     try {
       response = await _delegate
           .httpsCallable(
-            name,
+            name ?? '',
             options:
                 functions_dart.HttpsCallableOptions(timeout: options.timeout),
           )
